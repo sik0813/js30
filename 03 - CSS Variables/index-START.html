@@ -21,7 +21,17 @@
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
   <style>
+    :root {
+      --base: #ffc600;
+      --spacing: 10px;
+      --blur: 10px;
+    }
 
+    img {
+      padding: var(--spacing);
+      background: var(--base);
+      filter: blur(var(--blur));
+    }
     /*
       misc styles, nothing to do with CSS variables
     */
@@ -46,14 +56,15 @@
 
   <script>
     const targetImg = document.querySelector("img");
-    const spacingT = document.querySelector("#spacing");
-    const blurT = document.querySelector("#blur");
-    const baseT = document.querySelector("#base");
-    
-    spacingT.addEventListener("change", e => {console.log(e.target.value);});
-    blurT.addEventListener("change", e => {console.log(e.target.value);});
-    baseT.addEventListener("change", e => {console.log(e.target.value);});
-    
+    const inputs = document.querySelectorAll('.controls input');
+
+    function handleUpdate() {
+      const suffix = this.dataset.sizing || ''; // attribute 중 data-xx 로 되는 거 가져 올때 사용
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
+    }
+
+    inputs.forEach(input => input.addEventListener('change', handleUpdate));
+    inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
   </script>
 
 </body>
