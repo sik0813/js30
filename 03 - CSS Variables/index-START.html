@@ -45,6 +45,15 @@
   </style>
 
   <script>
+    const targetImg = document.querySelector("img");
+    const spacingT = document.querySelector("#spacing");
+    const blurT = document.querySelector("#blur");
+    const baseT = document.querySelector("#base");
+    
+    spacingT.addEventListener("change", e => {console.log(e.target.value);});
+    blurT.addEventListener("change", e => {console.log(e.target.value);});
+    baseT.addEventListener("change", e => {console.log(e.target.value);});
+    
   </script>
 
 </body>
