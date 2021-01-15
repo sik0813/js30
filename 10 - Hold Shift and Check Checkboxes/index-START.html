@@ -96,6 +96,15 @@
   </div>
 
 <script>
+  const items = Array.from(document.querySelectorAll(".item input"));
+  const itemArry = [];
+  let lastClickItem;
+  items.forEach((item, index)=>{
+    item.addEventListener("change", function(){console.log(this.checked)});
+    itemArry.push([index, item]);
+  });
+  console.log(itemArry);
+
 </script>
 </body>
 </html>

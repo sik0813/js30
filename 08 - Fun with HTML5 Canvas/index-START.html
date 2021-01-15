@@ -7,6 +7,17 @@
 <body>
 <canvas id="draw" width="800" height="800"></canvas>
 <script>
+  const canvas = document.querySelector("#draw");
+  const cdx = canvas.getContext("2d");
+  let currentPointSize = 100;
+  let currentMousePosition = [0, 0];
+
+  canvas.addEventListener("mousedown", e=>{
+    currentMousePosition = [e.layerX, e.layerY];
+    console.log(e);
+    //console.log(e.layerX, ' ', e.layerY);
+  });
+
 </script>
 
 <style>
