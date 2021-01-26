@@ -51,12 +51,33 @@
           timeout = null;
           if (!immediate) func.apply(context, args);
         };
-        var callNow = immediate && !timeout;
+        var callNow = immediate || !timeout; // 기존 && -> || 이 논리적으로 맞는 듯 함
         clearTimeout(timeout);
         timeout = setTimeout(later, wait);
         if (callNow) func.apply(context, args);
       };
     }
+
+    const sliderImages = document.querySelectorAll('.slide-in');
+
+    function slide(){
+      //console.log(window.scrollY + window.innerHeight);
+      sliderImages.forEach((sliderImage)=>{
+        // half way through the image
+        const slideInAt = (window.scrollY + window.innerHeight) - (sliderImage.height / 5);
+        // bottom of the image
+        const imageBottom = sliderImage.offsetTop + sliderImage.height;
+        const isHalfShown = slideInAt > sliderImage.offsetTop;
+        const isNotScrolledPast = window.scrollY < imageBottom;
+        if (isHalfShown && isNotScrolledPast) {
+          sliderImage.classList.add('active');
+        } else {
+          sliderImage.classList.remove('active');
+        }
+      });
+    }
+
+    window.addEventListener("scroll", slide);
 
   </script>
 
