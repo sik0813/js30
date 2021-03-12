@@ -182,6 +182,22 @@
     </li>
   </ul>
 <script>
+  const dataTime = Array.from(document.querySelectorAll("[data-time]"));
+  let sumTime = dataTime
+  .map(time=>{
+    const [min, sec] = (time.dataset.time).split(":").map(parseInt);
+    return (min * 60) + sec;
+  })
+  .reduce((sum, nowTime)=>sum + nowTime);
+
+  let hour = Math.floor(sumTime / 3600);
+  sumTime = sumTime % 3600;
+  
+  let min = Math.floor(sumTime / 60);
+  
+  let sec = sumTime % 60;
+  
+  console.log(hour, min, sec);
 </script>
 </body>
 </html>
